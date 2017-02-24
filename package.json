@@ -12,6 +12,6 @@
     "yargs": "^6.6.0"
   },
   "scripts": {
-    "run": "node --harmony index.js --width=1000 --height=1000 --savepath=out/theImapge.png --site=http//rt.com"
+    "run": "node --harmony index.js --width=1000 --height=1000 --savepath=rt.png --site=http://rt.com"
   }
 }
