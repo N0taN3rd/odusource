@@ -1,0 +1,3 @@
+HOME=/storage/odusource
+0 6,18 * * * /storage/odusource/rotatePage-odu.py
+0 12 * * * /storage/odusource/hostagify-odu.py

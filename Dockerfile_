@@ -1,0 +1,28 @@
+FROM ubuntu:16.04
+
+ADD . /mount
+
+
+# Run updates and install deps
+RUN apt-get update
+RUN apt-get install -y -q apt-transport-https snapcraft qtbase5-dev xorriso bsdtar build-essential \
+ autoconf libssl-dev icnsutils graphicsmagick gcc-multilib g++-multilib \
+ libgnome-keyring-dev lzip rpm yasm python libcurl3 \
+ libgtk2.0-0 libgconf-2-4 \
+ libasound2 libxtst6 libxss1 libnss3 xvfb cron ca-certificates make sudo
+
+
+RUN apt-get -y autoclean
+
+RUN pip install --upgrade pip --no-cache-dir
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install -y nodejs
+
+
+RUN npm i
+
+ENV PORT 80
+EXPOSE $PORT
+ENTRYPOINT ["/bin/sh", "-c"]
+
+CMD node --harmony index.js --width=1000 --height=1000 --savepath=out/theImapge.png --site=http://rt.com
