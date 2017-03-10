@@ -1,20 +1,24 @@
 const Nightmare = require('nightmare')
 const argv = require('yargs').argv
 
+const width = 1000, height = 1000
 
 const nightmare = Nightmare({
-  show: true,
   electronPath: require('electron'),
-  width: argv.width,
-  height: argv.height
+  fullscreen: true,
+  width: 1000,
+  height: 1000
 })
 
 nightmare
   .goto(argv.site)
   .wait(5000)
-  .screenshot(argv.savepath)
+  .click('a[class*=_close]')
+  .wait(2000)
+  .screenshot(`out/${argv.savepath}`)
   .end(() => {
     console.log('done')
-  }).catch(error => {
- 	console.error(error) 
- })
+  })
+  .catch(error => {
+    console.error(error)
+  })

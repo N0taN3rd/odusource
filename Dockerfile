@@ -1,26 +1,24 @@
-FROM ubuntu:16.04
+FROM node:7.7-onbuild
 
-ADD . /
+LABEL maintainer="John Berlin"
+
+
 # Run updates and install deps
-RUN apt-get update
-RUN apt-get install -y -q build-essential checkinstall libgtk2.0-0 libgconf-2-4 \
-libasound2 libxtst6 libxss1 libnss3 xvfb libcanberra-gtk* apt-transport-https \
-libgtkextra-dev libgconf2-dev libxtst-dev firefox software-properties-common curl \
-        git \
-	gconf2 \
-	gconf-service \
-	gvfs-bin \
-	libasound2 \
-	libcap2 \
-	libgnome-keyring-dev \
-	libnotify4 \
-	libxkbfile1 \
-	libxss1 \
-	libxtst6 \
-	xdg-utils 
+# RUN apt-get update && apt-get install -y apt-transport-https curl python build-essential software-properties-common unzip ca-certificates
+# RUN apt-get install -y python-software-properties libxext-dev libxrender-dev libxtst-dev \
+  #  libgtk2.0-0 libcap2 libxtst6 libgconf-2-4 libxss1 libgnome-keyring-dev libnss3 libasound2 dbus-x11 \
+   # libgtkextra-dev libgconf2-dev libxtst-dev \
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install -y nodejs
+#RUN apt-get update &&
+#   apt-get install -y libgtk2.0-0 libgconf-2-4 libxext-dev libxrender-dev libxtst-dev \
+#   libasound2 libxtst6 libcap2 xdg-utils libxss1 libnss3 xvfb dbus-x11 \
+#   libpng-dev libssl-dev libjpeg-dev   # gconf2 gconf-service gvfs-bin xdg-utils xvfb
 
 
-RUN npm i
-CMD node --harmony index.js --width=1000 --height=1000 --savepath=out/theImapge.png --site=http://rt.com
+RUN apt-get update &&\
+    apt-get install -y libgtk2.0-0 libgconf-2-4 \
+    libasound2 libxtst6 libxss1 libnss3 xvfb dbus-x11
+
+
+
+CMD ["sh", "run.sh"]

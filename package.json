@@ -4,12 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.4.7",
-    "electron": "^1.4.15",
+    "bluebird": "^3.5.0",
+    "electron": "^1.6.2",
     "fs-extra": "^2.0.0",
     "jimp": "^0.2.27",
-    "nightmare": "^2.9.1",
-    "yargs": "^6.6.0"
+    "nightmare": "^2.10.0",
+    "yargs": "^7.0.2"
   },
   "scripts": {
     "run": "node --harmony index.js --width=1000 --height=1000 --savepath=rt.png --site=http://rt.com"
